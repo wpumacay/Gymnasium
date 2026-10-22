@@ -11,15 +11,17 @@
 <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Make and register" href="../registry/" /><link rel="prev" title="Gym Migration Guide" href="../../introduction/migration_guide/" />
         <link rel="canonical" href="https://gymnasium.farama.org/api/env.html" />
 
-    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2023.08.19.dev1 -->
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Celshast 0.0.1 -->
         <title>Env - Gymnasium Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=3e7f4c72" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/celshast.css?v=9fbfb63d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=82c8b628" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/celshast-extensions.css?v=42bfddca" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/copybutton.css?v=a6a596f6" />
     
     
 
@@ -249,6 +251,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../utils/">Utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../typing/">Typing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../functional/">Functional Env</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Environments</span></p>
@@ -316,7 +319,7 @@
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/Farama-Foundation/Gymnasium">Github</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://arxiv.org/abs/2407.17032">Paper</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/d7ff1795e8527f6443371c3933bdb52b-Abstract-Datasets_and_Benchmarks_Track.html">Paper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gymnasium_release_notes/">Gymnasium Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gym_release_notes/">Gym Release Notes</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/Farama-Foundation/Gymnasium/blob/main/docs/README.md">Contribute to the Docs</a></li>
@@ -460,6 +463,12 @@ a certain timelimit was exceeded, or the physics simulation has entered an inval
 </ul>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Users commonly keep the data from every timestep, most obviously in a replay or rollout buffer, so each
+call must return new observation and info objects rather than modifying and returning the same buffer.
+<a class="reference internal" href="../utils/#gymnasium.utils.env_checker.check_env" title="gymnasium.utils.env_checker.check_env"><code class="xref py py-func docutils literal notranslate"><span class="pre">gymnasium.utils.env_checker.check_env()</span></code></a> checks this.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -501,11 +510,16 @@ the <code class="docutils literal notranslate"><span class="pre">info</span></co
 </ul>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As with <a class="reference internal" href="#gymnasium.Env.step" title="gymnasium.Env.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step()</span></code></a>, the returned observation and info must be new data rather than a
+buffer that a previous call already returned and that this call has mutated in place.</p>
+</div>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gymnasium.Env.render">
-<span class="sig-prename descclassname"><span class="pre">Env.</span></span><span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RenderFrame</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">RenderFrame</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/gymnasium/core/#Env.render"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gymnasium.Env.render" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Env.</span></span><span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/gymnasium/core/#Env.render"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gymnasium.Env.render" title="Link to this definition">¶</a></dt>
 <dd><p>Compute the render frames as specified by <a class="reference internal" href="#gymnasium.Env.render_mode" title="gymnasium.Env.render_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">render_mode</span></code></a> during the initialization of the environment.</p>
 <p>The environment’s <a class="reference internal" href="#gymnasium.Env.metadata" title="gymnasium.Env.metadata"><code class="xref py py-attr docutils literal notranslate"><span class="pre">metadata</span></code></a> render modes (<cite>env.metadata[“render_modes”]</cite>) should contain the possible
 ways to implement the render modes. In addition, list versions for most render modes is achieved through
@@ -540,7 +554,7 @@ in the environment initialised, i.e., <code class="docutils literal notranslate"
 
 <dl class="py method">
 <dt class="sig sig-object py" id="gymnasium.Env.close">
-<span class="sig-prename descclassname"><span class="pre">Env.</span></span><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/gymnasium/core/#Env.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gymnasium.Env.close" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">Env.</span></span><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/gymnasium/core/#Env.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gymnasium.Env.close" title="Link to this definition">¶</a></dt>
 <dd><p>After the user has finished using the environment, close contains the code necessary to “clean up” the environment.</p>
 <p>This is critical for closing rendering windows, database or HTTP connections.
 Calling <code class="docutils literal notranslate"><span class="pre">close</span></code> on an already closed environment has no effect and won’t raise an error.</p>
@@ -670,7 +684,7 @@ the seed will take the value -1.</p>
           <div class="bottom-of-page">
             <div class="left-details">
               <div class="copyright">
-                Copyright &#169; 2025 Farama Foundation
+                Copyright &#169; 2026 Farama Foundation
               </div>
               <!--
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
@@ -814,10 +828,12 @@ the seed will take the value -1.</p>
         })()
       </script>
 
-    <script src="../../_static/documentation_options.js?v=151cd43d"></script>
+    <script src="../../_static/documentation_options.js?v=74824699"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/scripts/furo.js?v=7660844c"></script>
+    <script src="../../_static/scripts/celshast.js?v=a788a8c6"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=ccdb6887"></script>
     
     <script>
 
@@ -878,14 +894,6 @@ the seed will take the value -1.</p>
         const jsonResponse = xhr.response;
         const sections = {
           "Core Projects": [],
-          "Mature Projects": {
-            "Documentation": [],
-            "Repositories": [],
-          },
-          "Incubating Projects": {
-            "Documentation": [],
-            "Repositories": [],
-          },
           "Foundation": [
             {
               name: "About",
@@ -899,7 +907,14 @@ the seed will take the value -1.</p>
               name: "Donate",
               link: "https://farama.org/donations"
             }
-          ]
+          ],
+          "Mature Projects": {
+            "Documentation": [],
+          },
+          "Incubating Projects": {
+            "Documentation": [],
+            "Repositories": [],
+          }
         }
 
         // Categorize projects
@@ -915,8 +930,6 @@ the seed will take the value -1.</p>
           } else if (projectJson.type == "mature") {
             if (projectJson.website !== null) {
               sections["Mature Projects"]["Documentation"].push(projectJson)
-            } else {
-              sections["Mature Projects"]["Repositories"].push(projectJson)
             }
           } else {
             if (projectJson.website !== null) {
@@ -928,6 +941,13 @@ the seed will take the value -1.</p>
         })
 
         const menuContainer = document.querySelector(".farama-header-menu__body");
+
+        const stackedColumnElem = Object.assign(
+          document.createElement('div'), {
+            style: 'display: flex; flex-direction: column;'
+          }
+        );
+        const stackedKeys = new Set(["Core Projects", "Foundation"]);
 
         Object.keys(sections).forEach((key, i) => {
           const sectionElem = Object.assign(
@@ -972,7 +992,14 @@ the seed will take the value -1.</p>
             const ulElem = createProjectsList(projects, true);
             sectionElem.appendChild(ulElem);
           }
-          menuContainer.appendChild(sectionElem)
+          if (stackedKeys.has(key)) {
+            if (!stackedColumnElem.parentNode) {
+              menuContainer.appendChild(stackedColumnElem);
+            }
+            stackedColumnElem.appendChild(sectionElem);
+          } else {
+            menuContainer.appendChild(sectionElem);
+          }
         });
       }
 

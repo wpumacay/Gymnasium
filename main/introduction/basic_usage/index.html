@@ -11,15 +11,17 @@
 <link rel="index" title="Index" href="../../genindex/" /><link rel="search" title="Search" href="../../search/" /><link rel="next" title="Training an Agent" href="../train_agent/" /><link rel="prev" title="&lt;no title&gt;" href="../../" />
         <link rel="canonical" href="https://gymnasium.farama.org/introduction/basic_usage.html" />
 
-    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2023.08.19.dev1 -->
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Celshast 0.0.1 -->
         <title>Basic Usage - Gymnasium Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=3e7f4c72" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/celshast.css?v=9fbfb63d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=61a4c737" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
     <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=82c8b628" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/celshast-extensions.css?v=42bfddca" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/copybutton.css?v=a6a596f6" />
     
     
 
@@ -249,6 +251,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/utils/">Utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/typing/">Typing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/functional/">Functional Env</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Environments</span></p>
@@ -316,7 +319,7 @@
 <p class="caption" role="heading"><span class="caption-text">Development</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/Farama-Foundation/Gymnasium">Github</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://arxiv.org/abs/2407.17032">Paper</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/d7ff1795e8527f6443371c3933bdb52b-Abstract-Datasets_and_Benchmarks_Track.html">Paper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gymnasium_release_notes/">Gymnasium Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gym_release_notes/">Gym Release Notes</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/Farama-Foundation/Gymnasium/blob/main/docs/README.md">Contribute to the Docs</a></li>
@@ -387,7 +390,7 @@
 <h2>Why Gymnasium?<a class="headerlink" href="#why-gymnasium" title="Link to this heading">¶</a></h2>
 <p>Whether you want to train an agent to play games, control robots, or optimize trading strategies, Gymnasium gives you the tools to build and test your ideas.
 At its heart, Gymnasium provides an API (application programming interface) for all single agent reinforcement learning environments, with implementations of common environments: cartpole, pendulum, mountain-car, mujoco, atari, and more. This page will outline the basics of how to use Gymnasium including its four key functions: <a class="reference internal" href="../../api/registry/#gymnasium.make" title="gymnasium.make"><code class="xref py py-meth docutils literal notranslate"><span class="pre">make()</span></code></a>, <a class="reference internal" href="../../api/env/#gymnasium.Env.reset" title="gymnasium.Env.reset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Env.reset()</span></code></a>, <a class="reference internal" href="../../api/env/#gymnasium.Env.step" title="gymnasium.Env.step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Env.step()</span></code></a> and <a class="reference internal" href="../../api/env/#gymnasium.Env.render" title="gymnasium.Env.render"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Env.render()</span></code></a>.</p>
-<p>At the core of Gymnasium is <a class="reference internal" href="../../api/env/#gymnasium.Env" title="gymnasium.Env"><code class="xref py py-class docutils literal notranslate"><span class="pre">Env</span></code></a>, a high-level python class representing a markov decision process (MDP) from reinforcement learning theory (note: this is not a perfect reconstruction, missing several components of MDPs). The class provides users the ability start new episodes, take actions and visualize the agent’s current state. Alongside <a class="reference internal" href="../../api/env/#gymnasium.Env" title="gymnasium.Env"><code class="xref py py-class docutils literal notranslate"><span class="pre">Env</span></code></a>, <a class="reference internal" href="../../api/wrappers/#gymnasium.Wrapper" title="gymnasium.Wrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wrapper</span></code></a> are provided to help augment / modify the environment, in particular, the agent observations, rewards and actions taken.</p>
+<p>At the core of Gymnasium is <a class="reference internal" href="../../api/env/#gymnasium.Env" title="gymnasium.Env"><code class="xref py py-class docutils literal notranslate"><span class="pre">Env</span></code></a>, a high-level python class representing a markov decision process (MDP) from reinforcement learning theory (note: this is not a perfect reconstruction, missing several components of MDPs). The class provides users the ability to start new episodes, take actions and visualize the agent’s current state. Alongside <a class="reference internal" href="../../api/env/#gymnasium.Env" title="gymnasium.Env"><code class="xref py py-class docutils literal notranslate"><span class="pre">Env</span></code></a>, <a class="reference internal" href="../../api/wrappers/#gymnasium.Wrapper" title="gymnasium.Wrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wrapper</span></code></a> are provided to help augment / modify the environment, in particular, the agent observations, rewards and actions taken.</p>
 </section>
 <section id="initializing-environments">
 <h2>Initializing Environments<a class="headerlink" href="#initializing-environments" title="Link to this heading">¶</a></h2>
@@ -395,7 +398,7 @@ At its heart, Gymnasium provides an API (application programming interface) for 
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gymnasium</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gym</span>
 
 <span class="c1"># Create a simple environment perfect for beginners</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">&#39;CartPole-v1&#39;</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s1">'CartPole-v1'</span><span class="p">)</span>
 
 <span class="c1"># The CartPole environment: balance a pole on a moving cart</span>
 <span class="c1"># - Simple but not trivial</span>
@@ -423,18 +426,18 @@ At its heart, Gymnasium provides an API (application programming interface) for 
 <section id="your-first-rl-program">
 <h2>Your First RL Program<a class="headerlink" href="#your-first-rl-program" title="Link to this heading">¶</a></h2>
 <p>Let’s start with a simple example using CartPole - perfect for understanding the basics:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run `pip install &quot;gymnasium[classic-control]&quot;` for this example.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run `pip install "gymnasium[classic-control]"` for this example.</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">gymnasium</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gym</span>
 
 <span class="c1"># Create our training environment - a cart with a pole that needs balancing</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;human&quot;</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"CartPole-v1"</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">"human"</span><span class="p">)</span>
 
 <span class="c1"># Reset environment to start a new episode</span>
 <span class="n">observation</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-<span class="c1"># observation: what the agent can &quot;see&quot; - cart position, velocity, pole angle, etc.</span>
+<span class="c1"># observation: what the agent can "see" - cart position, velocity, pole angle, etc.</span>
 <span class="c1"># info: extra debugging information (usually not needed for basic learning)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting observation: </span><span class="si">{</span><span class="n">observation</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Starting observation: </span><span class="si">{</span><span class="n">observation</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="c1"># Example output: [ 0.01234567 -0.00987654  0.02345678  0.01456789]</span>
 <span class="c1"># [cart_position, cart_velocity, pole_angle, pole_angular_velocity]</span>
 
@@ -455,7 +458,7 @@ At its heart, Gymnasium provides an API (application programming interface) for 
     <span class="n">total_reward</span> <span class="o">+=</span> <span class="n">reward</span>
     <span class="n">episode_over</span> <span class="o">=</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Episode finished! Total reward: </span><span class="si">{</span><span class="n">total_reward</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Episode finished! Total reward: </span><span class="si">{</span><span class="n">total_reward</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -492,14 +495,14 @@ At its heart, Gymnasium provides an API (application programming interface) for 
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gymnasium</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gym</span>
 
 <span class="c1"># Discrete action space (button presses)</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Action space: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Discrete(2) - left or right</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample action: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 0 or 1</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"CartPole-v1"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Action space: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># Discrete(2) - left or right</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sample action: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># 0 or 1</span>
 
 <span class="c1"># Box observation space (continuous values)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Observation space: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Box with 4 values</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Observation space: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># Box with 4 values</span>
 <span class="c1"># Box([-4.8, -inf, -0.418, -inf], [4.8, inf, 0.418, inf])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample observation: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Random valid observation</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sample observation: </span><span class="si">{</span><span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># Random valid observation</span>
 </pre></div>
 </div>
 </section>
@@ -512,7 +515,7 @@ At its heart, Gymnasium provides an API (application programming interface) for 
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">gymnasium.wrappers</span><span class="w"> </span><span class="kn">import</span> <span class="n">FlattenObservation</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Start with a complex observation space</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CarRacing-v3&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"CarRacing-v3"</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">env</span><span class="o">.</span><span class="n">observation_space</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(96, 96, 3)  # 96x96 RGB image</span>
 
@@ -531,7 +534,7 @@ At its heart, Gymnasium provides an API (application programming interface) for 
 <li><p><a class="reference internal" href="../../api/wrappers/action_wrappers/#gymnasium.wrappers.RescaleAction" title="gymnasium.wrappers.RescaleAction"><code class="xref py py-class docutils literal notranslate"><span class="pre">RescaleAction</span></code></a>: Rescales actions to a different range (useful for algorithms that output actions in [-1, 1] but environment expects [0, 10]).</p></li>
 <li><p><a class="reference internal" href="../../api/wrappers/observation_wrappers/#gymnasium.wrappers.TimeAwareObservation" title="gymnasium.wrappers.TimeAwareObservation"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeAwareObservation</span></code></a>: Adds information about the current timestep to the observation (sometimes helps with learning).</p></li>
 </ul>
-<p>For a full list of implemented wrappers in Gymnasium, see <a class="reference internal" href="../../api/wrappers/"><span class="doc std std-doc">wrappers</span></a>.</p>
+<p>For a full list of implemented wrappers in Gymnasium, see <a class="reference internal" href="../../api/wrappers/table/"><span class="doc std std-doc">wrappers</span></a>.</p>
 <p>If you have a wrapped environment and want to access the original environment underneath all the layers of wrappers (to manually call a function or change some underlying aspect), you can use the <a class="reference internal" href="../../api/env/#gymnasium.Env.unwrapped" title="gymnasium.Env.unwrapped"><code class="xref py py-attr docutils literal notranslate"><span class="pre">unwrapped</span></code></a> attribute. If the environment is already a base environment, <a class="reference internal" href="../../api/env/#gymnasium.Env.unwrapped" title="gymnasium.Env.unwrapped"><code class="xref py py-attr docutils literal notranslate"><span class="pre">unwrapped</span></code></a> just returns itself.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_env</span>
 <span class="go">&lt;FlattenObservation&lt;TimeLimit&lt;OrderEnforcing&lt;PassiveEnvChecker&lt;CarRacing&lt;CarRacing-v3&gt;&gt;&gt;&gt;&gt;&gt;</span>
@@ -549,11 +552,11 @@ At its heart, Gymnasium provides an API (application programming interface) for 
 </ul>
 <p><strong>Common Code Mistakes:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ❌ Wrong - forgetting to reset</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"CartPole-v1"</span><span class="p">)</span>
 <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>  <span class="c1"># Error!</span>
 
 <span class="c1"># ✅ Correct - always reset first</span>
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">"CartPole-v1"</span><span class="p">)</span>
 <span class="n">obs</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>  <span class="c1"># Start properly</span>
 <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>  <span class="c1"># Now this works</span>
 </pre></div>
@@ -592,7 +595,7 @@ At its heart, Gymnasium provides an API (application programming interface) for 
           <div class="bottom-of-page">
             <div class="left-details">
               <div class="copyright">
-                Copyright &#169; 2025 Farama Foundation
+                Copyright &#169; 2026 Farama Foundation
               </div>
               <!--
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
@@ -727,10 +730,12 @@ At its heart, Gymnasium provides an API (application programming interface) for 
         })()
       </script>
 
-    <script src="../../_static/documentation_options.js?v=151cd43d"></script>
+    <script src="../../_static/documentation_options.js?v=74824699"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/scripts/furo.js?v=7660844c"></script>
+    <script src="../../_static/scripts/celshast.js?v=a788a8c6"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=ccdb6887"></script>
     
     <script>
 
@@ -791,14 +796,6 @@ At its heart, Gymnasium provides an API (application programming interface) for 
         const jsonResponse = xhr.response;
         const sections = {
           "Core Projects": [],
-          "Mature Projects": {
-            "Documentation": [],
-            "Repositories": [],
-          },
-          "Incubating Projects": {
-            "Documentation": [],
-            "Repositories": [],
-          },
           "Foundation": [
             {
               name: "About",
@@ -812,7 +809,14 @@ At its heart, Gymnasium provides an API (application programming interface) for 
               name: "Donate",
               link: "https://farama.org/donations"
             }
-          ]
+          ],
+          "Mature Projects": {
+            "Documentation": [],
+          },
+          "Incubating Projects": {
+            "Documentation": [],
+            "Repositories": [],
+          }
         }
 
         // Categorize projects
@@ -828,8 +832,6 @@ At its heart, Gymnasium provides an API (application programming interface) for 
           } else if (projectJson.type == "mature") {
             if (projectJson.website !== null) {
               sections["Mature Projects"]["Documentation"].push(projectJson)
-            } else {
-              sections["Mature Projects"]["Repositories"].push(projectJson)
             }
           } else {
             if (projectJson.website !== null) {
@@ -841,6 +843,13 @@ At its heart, Gymnasium provides an API (application programming interface) for 
         })
 
         const menuContainer = document.querySelector(".farama-header-menu__body");
+
+        const stackedColumnElem = Object.assign(
+          document.createElement('div'), {
+            style: 'display: flex; flex-direction: column;'
+          }
+        );
+        const stackedKeys = new Set(["Core Projects", "Foundation"]);
 
         Object.keys(sections).forEach((key, i) => {
           const sectionElem = Object.assign(
@@ -885,7 +894,14 @@ At its heart, Gymnasium provides an API (application programming interface) for 
             const ulElem = createProjectsList(projects, true);
             sectionElem.appendChild(ulElem);
           }
-          menuContainer.appendChild(sectionElem)
+          if (stackedKeys.has(key)) {
+            if (!stackedColumnElem.parentNode) {
+              menuContainer.appendChild(stackedColumnElem);
+            }
+            stackedColumnElem.appendChild(sectionElem);
+          } else {
+            menuContainer.appendChild(sectionElem);
+          }
         });
       }
 
